@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Login | Minimalist Blog{% endblock %}
+
+{% block content %}
+<section class="admin-panel admin-auth-panel">
+  <div class="admin-panel-header">
+    <p class="admin-eyebrow">Admin access</p>
+    <h1>Sign in to publish</h1>
+  </div>
+
+  <form method="post" class="admin-form">
+    {% csrf_token %}
+
+    {% if form.non_field_errors %}
+      <div class="admin-alert">
+        {{ form.non_field_errors }}
+      </div>
+    {% endif %}
+
+    <div class="admin-field">
+      <label for="{{ form.username.id_for_label }}">Username</label>
+      {{ form.username }}
+      {{ form.username.errors }}
+    </div>
+
+    <div class="admin-field">
+      <label for="{{ form.password.id_for_label }}">Password</label>
+      {{ form.password }}
+      {{ form.password.errors }}
+    </div>
+
+    <button type="submit" class="admin-submit">Login</button>
+  </form>
+</section>
+{% endblock %}

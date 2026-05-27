@@ -1,0 +1,127 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Vatsal Gohel |
+Portfolio{% endblock %} {% block content %}
+<section class="bento-container">
+  <div class="bento-box hero-box animate-scale delay-1">
+    <div class="hero-heading">
+      <div class="hero-profile-pic">
+        <img src="/media/49603867.jpg" alt="Vatsal Gohel" />
+      </div>
+      <div class="hero-badge">Data Analyst</div>
+    </div>
+    <div class="bento-content">
+      <h1 class="hero-title">Vatsal Gohel</h1>
+      <p class="hero-subtitle">
+        Crafting readable, maintainable code and reproducible data workflows.
+      </p>
+      <div class="bento-actions">
+        <a href="mailto:gohel.vatsal11@gmail.com" class="bento-btn primary"
+          >Let's Connect</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="bento-box skills-box animate-scale delay-2">
+    <h3>Technical Arsenal</h3>
+    <div class="bento-skills">
+      <span><i class="fa-brands fa-python"></i>Python</span>
+      <span><i class="devicon-jupyter-plain"></i>Jupyter</span>
+      <span><i class="fa-solid fa-chart-line"></i>Data Analysis</span>
+      <span><i class="fa-brands fa-js"></i>JavaScript</span>
+      <span><i class="fa-brands fa-react"></i>React</span>
+      <span><i class="fa-brands fa-docker"></i>Docker</span>
+    </div>
+  </div>
+
+  <div class="bento-box mini-box contact-box animate-scale delay-3">
+    <div class="icon"><i class="fa-solid fa-envelope"></i></div>
+    <h4>Get in touch</h4>
+    <a href="mailto:gohel.vatsal11@gmail.com">gohel.vatsal11@gmail.com</a>
+  </div>
+
+  <div class="bento-box mini-box social-box animate-scale delay-4">
+    <div class="icon"><i class="fa-brands fa-github"></i></div>
+    <h4>GitHub</h4>
+    <a href="https://github.com/vatsalgohel" target="_blank" rel="noreferrer"
+      >@vatsalgohel</a
+    >
+  </div>
+  <div class="bento-box mini-box social-box animate-scale delay-4">
+    <div class="icon"><i class="fa-brands fa-linkedin"></i></div>
+    <h4>LinkedIn</h4>
+    <a
+      href="https://www.linkedin.com/in/gohelvatsal/"
+      target="_blank"
+      rel="noreferrer"
+      >@gohelvatsal</a
+    >
+  </div>
+
+  <div class="bento-box about-box animate-scale delay-5">
+    <h3>The Journey</h3>
+    <p>
+      Experienced in data analysis and web development with a strong background
+      in Jupyter Notebook workflows. I specialize in building prototypes, data
+      pipelines, and production-ready features that scale elegantly.
+    </p>
+  </div>
+
+  <div class="bento-box experience-box animate-scale delay-6">
+    <h3>Experience</h3>
+    <div class="bento-exp-item">
+      <strong>Open-source Contributor</strong>
+      <span
+        >Contributed Jupyter notebooks and data tooling to public
+        projects.</span
+      >
+    </div>
+    <div class="bento-exp-item">
+      <strong>Software Engineer</strong>
+      <span>Built data-oriented web apps and services focused on clarity.</span>
+    </div>
+  </div>
+
+  <div class="bento-box project-box animate-scale delay-7">
+    <div class="project-inner">
+      <div class="icon"><i class="fa-solid fa-book-open"></i></div>
+      <h3>Jupyter Collection</h3>
+      <p>
+        Interactive notebooks showcasing advanced data analysis, visualization,
+        and reproducible computational research methods.
+      </p>
+      <a href="#" class="bento-link">Explore &rarr;</a>
+    </div>
+  </div>
+
+  <div class="bento-box project-box animate-scale delay-8">
+    <div class="project-inner">
+      <div class="icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+      <h3>Data Tools & Scripts</h3>
+      <p>
+        High-performance utilities for data cleaning, ETL processes, and rapid
+        prototyping of data models.
+      </p>
+      <a href="#" class="bento-link">Explore &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
+
+    document.querySelectorAll(".animate-scale").forEach((el) => {
+      observer.observe(el);
+    });
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Blog Post | Minimalist Blog{% endblock %}
+
+{% block content %}
+<section class="admin-panel">
+  <div class="admin-panel-header admin-panel-header-row">
+    <div>
+      <p class="admin-eyebrow">Blog admin</p>
+      <h1>Create blog post</h1>
+    </div>
+    <a href="{% url 'admin_logout' %}" class="admin-secondary-link">Logout</a>
+  </div>
+
+  {% if messages %}
+    {% for message in messages %}
+      <div class="admin-alert admin-alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+
+  <form method="post" enctype="multipart/form-data" class="admin-form">
+    {% csrf_token %}
+
+    {% if form.non_field_errors %}
+      <div class="admin-alert">{{ form.non_field_errors }}</div>
+    {% endif %}
+
+    <div class="admin-field">
+      <label for="{{ form.title.id_for_label }}">Title</label>
+      {{ form.title }}
+      {{ form.title.errors }}
+    </div>
+
+    <div class="admin-field">
+      <label for="{{ form.cover_image.id_for_label }}">Image</label>
+      {{ form.cover_image }}
+      {{ form.cover_image.errors }}
+    </div>
+
+    <div class="admin-field">
+      <label for="{{ form.content.id_for_label }}">Content</label>
+      {{ form.content }}
+      {{ form.content.errors }}
+    </div>
+
+    <button type="submit" class="admin-submit">Submit</button>
+  </form>
+</section>
+
+{% if posts %}
+<section class="admin-posts-panel">
+  <div class="admin-panel-header">
+    <p class="admin-eyebrow">Published posts</p>
+    <h2>Recent blog posts</h2>
+  </div>
+
+  <div class="admin-post-list">
+    {% for post in posts %}
+      <div class="admin-post-row">
+        <a href="{% url 'post_detail' pk=post.pk %}" class="admin-post-info">
+          <span>{{ post.title }}</span>
+          <small>{{ post.created_at|date:"F j, Y" }}</small>
+        </a>
+        <form
+          method="post"
+          action="{% url 'admin_post_delete' pk=post.pk %}"
+          onsubmit="return confirm('Delete this blog post?');"
+        >
+          {% csrf_token %}
+          <button type="submit" class="admin-delete-btn">Delete</button>
+        </form>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+{% endblock %}
